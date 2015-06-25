@@ -1,17 +1,18 @@
 
-<html>
+<html ng-app="app" lang="en">
   <head>
     <title>NBN Setup</title>
     <meta charset="UTF-8"/>
     <link type="text/css" rel="stylesheet" href="src/css/stylesheet.css"/>
+    <script type="text/javascript" src="src/js/lib/angular/angular.js"></script>
+    <script type="text/javascript" src="src/js/lib/angular-route/angular-route.js"></script>
+    <script type="text/javascript" src="src/js/lib/angular-touch/angular-touch.js"></script>
+    <script type="text/javascript" src="src/js/templateCache.js"></script>
+    <script type="text/javascript" src="src/js/app.js"></script>
   </head>
   <body>
-    <nav><img height="30px" width="30px" alt="logo"/>
-      <p style="display:inline; color: #fff">Nav</p>
-    </nav>
-    <container>
-      <div class="booklet">this is a booklet</div>
-      <div class="booklet">this is also a booklet</div>
-    </container>
+    <div class="viewcontainer">
+      <ng-view></ng-view>
+    </div>
   </body>
 </html>
