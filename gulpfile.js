@@ -6,12 +6,19 @@ use `gulp deploy` to push master to gh-pages for staging
 */
 
 var gulp 		= require('gulp');
+var bower = require ('gulp-bower');
 var sass 		= require('gulp-sass');
 var notify 		= require('gulp-notify');
 var jade		= require('gulp-jade');
+var streamqueue = require('streamqueue');
+var templateCache = require ('gulp-angular-templatecache');
+
 var ghPages		= require('gulp-gh-pages');
 var browserSync = require('browser-sync');
 var reload 		= browserSync.reload;
+
+
+
 
 
 gulp.task('move', function(){
@@ -32,12 +39,37 @@ gulp.task('jade',['move'], function () {
 	})
 	return gulp.src('./build/jade/*.jade')
 	.pipe(j)
-	.pipe(gulp.dest('./public'))
-	browserSync.reload;
+	.pipe(gulp.dest('./build/jade/temp'));
 });
 
+
+//create a template cache of the views
+gulp.task('views', ['jade'], function(){
+ return streamqueue({ objectMode: true },
+    gulp.src('./build/jade/temp/*.html')
+    )
+        .pipe(templateCache('./temp/templateCache.js', { module: 'templatescache', standalone: true }))
+        .pipe(gulp.dest('./build/js/'));
+});
+
+
+//move both the templatecache service and angular app to public/js
+gulp.task('scripts', ['views'], function(){
+	return streamqueue({ objectMode: true },
+		gulp.src('./build/js/app.js'),
+		gulp.src('./build/js/temp/templateCache.js')
+		)
+		.pipe(gulp.dest('./public/src/js/'));
+		//.pipe(del('./build/js/temp')) //DANGEROUS can delete whole app if not used correctly
+});
+
+gulp.task('index',['scripts'], function(){
+	return gulp.src('./build/jade/temp/index.html')
+	.pipe(gulp.dest('./public'))
+})
+
 //compile scss to css
-gulp.task('build', ['jade'], function(){
+gulp.task('build', ['index'], function(){
 	return gulp.src('./build/scss/*.scss')
 		.pipe(sass({
 			style: 'compressed',
@@ -60,12 +92,21 @@ gulp.task('serve', function(){
 	browserSync.init(['./public/index.html'],{
 		server: {
 			baseDir: "./public"
-		}
+		},
+		open: false
 	})
 });
 
+
+//move bower components to the library folder
+gulp.task('bower', function(){
+	return bower()
+		.pipe(gulp.dest('./public/src/js/lib/'));
+});
+
+
 //the dafault task
-gulp.task('default', ['watch', 'serve', 'build']);
+gulp.task('default', ['watch', 'serve', 'bower', 'build']);
 
 
 

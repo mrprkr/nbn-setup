@@ -1,7 +1,12 @@
-html
+html(ng-app="app", lang="en")
 	head
 		title NBN Setup
 		meta(charset="UTF-8")
 		link(type="text/css" rel="stylesheet" href="src/css/stylesheet.css")
+		script(type="text/javascript", src="src/js/lib/angular/angular.js")
+		script(type="text/javascript", src="src/js/templateCache.js")
+		script(type="text/javascript", src="src/js/app.js")
+
 	body
-		h1 Hello World
+		include header.jade
+		include content.jade
