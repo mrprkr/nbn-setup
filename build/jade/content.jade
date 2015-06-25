@@ -1,9 +1,22 @@
 .hero
-	br 
-	br
-	br
-	h1 Welcome to video setup
-	h4 Which booklet do you have?
+	h1 Welcome to the NBN
+	h4 Video Setup instructions
+
+
+
 .container
-	.booklet(style={'background-color':'magenta'}) this is a booklet
-	.booklet(style={'background-color':'aqua'}) this is also a booklet
+	h4 Please select your connection type:
+	span(style={'text-align':'right', 'text-decoration':'underline'}, ng-click="showingHelp = !showingHelp", ng-hide="showingHelp").pseudoLink Not sure?
+	span(style={'text-align':'right', 'text-decoration':'underline'}, ng-click="showingHelp = !showingHelp", ng-hide="!showingHelp").pseudoLink hide
+	
+	.container(ng-if="showingHelp")
+		br
+		p You can find your connection type in a few places:
+		ul.connectionTypeList
+			li On your welcome letter
+			li On the front of your setup guide
+			li Using the following diagram:
+		br
+	.booklet Fibre to the Premesis &gt;
+	.booklet Fixed Wireless &gt;
+	.booklet Fibre to the Node / Fibre to the Basement &gt;

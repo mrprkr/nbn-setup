@@ -84,7 +84,7 @@ gulp.task('build', ['index'], function(){
 
 //compile on change
 gulp.task('watch', function(){
-	gulp.watch(['./build/scss/*.scss', './build/jade/*.jade'], ['build']);
+	gulp.watch(['./build/scss/*.scss', './build/jade/*.jade', 'build/js/*.js'], ['build']);
 });
 
 //serve to the browser

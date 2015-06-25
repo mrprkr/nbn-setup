@@ -11,9 +11,14 @@ nav {
   height: 35px;
   background-color: #444; }
 
+.pseudoLink {
+  cursor: pointer; }
+  .pseudoLink:hover {
+    opacity: 0.8; }
+
 .hero {
   text-align: center;
-  height: 180px;
+  padding: 30px;
   vertical-align: middle; }
 
 .container {
@@ -22,12 +27,18 @@ nav {
   margin-left: auto;
   margin-right: auto; }
 
+.connectionTypeList {
+  margin-top: 0.5rem; }
+  .connectionTypeList li {
+    margin-left: 1.5rem;
+    line-height: 1.4rem; }
+
 .booklet {
   display: block;
   margin-left: auto;
   margin-right: auto;
   margin-top: 1rem;
   margin-bottom: 1rem;
-  width: 90%;
-  height: 400px;
-  background-color: #efefef; }
+  padding: 15px;
+  background-color: #efefef;
+  cursor: pointer; }

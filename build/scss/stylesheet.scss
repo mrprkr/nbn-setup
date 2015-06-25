@@ -16,9 +16,16 @@ nav {
 	}
 }
 
+.pseudoLink {
+	cursor: pointer;
+	&:hover {
+		opacity: 0.8;
+	}
+}
+
 .hero {
 	text-align: center;
-	height: 180px;
+	padding: 30px;
 	vertical-align: middle;
 }
 
@@ -32,6 +39,14 @@ nav {
 	}
 }
 
+.connectionTypeList {
+	margin-top: 0.5rem;
+	li{
+		margin-left: 1.5rem;
+		line-height: 1.4rem;
+	}
+}
+
 .booklet {
 	display: block;
 	margin: {
@@ -40,9 +55,9 @@ nav {
 		top: 1rem;
 		bottom: 1rem;
 	}
-	width: 90%;
-	height: 400px;
+	padding: 15px;
 	background: {
 		color: #efefef;
 	}
+	cursor: pointer;
 }

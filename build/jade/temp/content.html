@@ -1,9 +1,19 @@
 
-<div class="hero"><br/><br/><br/>
-  <h1>Welcome to video setup</h1>
-  <h4>Which booklet do you have?</h4>
+<div class="hero">
+  <h1>Welcome to the NBN</h1>
+  <h4>Video Setup instructions</h4>
 </div>
 <div class="container">
-  <div style="background-color:magenta" class="booklet">this is a booklet</div>
-  <div style="background-color:aqua" class="booklet">this is also a booklet</div>
+  <h4>Please select your connection type:</h4><span style="text-align:right;text-decoration:underline" ng-click="showingHelp = !showingHelp" ng-hide="showingHelp" class="pseudoLink">Not sure?</span><span style="text-align:right;text-decoration:underline" ng-click="showingHelp = !showingHelp" ng-hide="!showingHelp" class="pseudoLink">hide</span>
+  <div ng-if="showingHelp" class="container"><br/>
+    <p>You can find your connection type in a few places:</p>
+    <ul class="connectionTypeList">
+      <li>On your welcome letter</li>
+      <li>On the front of your setup guide</li>
+      <li>Using the following diagram:</li>
+    </ul><br/>
+  </div>
+  <div class="booklet">Fibre to the Premesis &gt;</div>
+  <div class="booklet">Fixed Wireless &gt;</div>
+  <div class="booklet">Fibre to the Node / Fibre to the Basement &gt;</div>
 </div>
