@@ -12,10 +12,13 @@ app.config(['$routeProvider', '$locationProvider',
 			})
 
 			.when('/player', {
-				templateUrl: 'player.html',
+				templateUrl: 'video_player.html',
 				controller: 'player-controller'
 			})
 
+			.otherwise({
+				redirectTo: '/'
+			})
 }])
 
 app.controller('main-controller', function($scope){

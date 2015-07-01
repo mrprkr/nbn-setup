@@ -1,19 +1,36 @@
 
-<div class="hero">
-  <h1>Welcome</h1>
-  <h4>NBN Video Setup instructions</h4>
+<div class="heading">
+  <h2>Welcome to the NBN</h2>
+  <h4>Video instruction prototype</h4>
 </div>
-<div class="container">
-  <h4>Please select your connection type:</h4><span style="text-align:right;text-decoration:underline" ng-click="showingHelp = !showingHelp" ng-hide="showingHelp" class="pseudoLink">Not sure?</span><span style="text-align:right;text-decoration:underline" ng-click="showingHelp = !showingHelp" ng-hide="!showingHelp" class="pseudoLink">hide</span>
-  <div ng-if="showingHelp" class="container"><br/>
-    <p>You can find your connection type in a few places:</p>
-    <ul class="connectionTypeList">
-      <li>On your welcome letter</li>
-      <li>On the front of your setup guide</li>
-      <li>Using the following diagram:</li>
-    </ul><img height="130" width="300" alt="identify FTTP"/><br/>
+<div class="notSureHelper">
+  <p ng-show="!showingHelper" ng-click="showingHelper = !showingHelper">Not sure which one you have?</p>
+  <p ng-show="showingHelper" ng-click="showingHelper = !showingHelper">hide</p>
+</div>
+<div ng-show="showingHelper" class="checkWelcomeLetter">
+  <p>You can find your connection type on your welcome letter and on the front of your setup booklet.</p><br/>
+</div>
+<div class="connectionContainer">
+  <div class="connection">
+    <div class="description">
+      <h3>Blue Booklet</h3><br/>
+      <p>Connection instructions for:</p>
+      <ul>
+        <li>Fibre to the node</li>
+        <li>Fibre to the basement</li>
+      </ul><br/><a href="#/player">
+        <button>Play Video</button></a>
+    </div>
   </div>
-  <div class="booklet"> <img height="30" width="30" alt="FTTP"/><span>Fibre to the Premesis &gt;</span></div>
-  <div class="booklet">Fibre to the Node / Fibre to the Basement &gt;</div>
-  <div class="booklet">Fixed Wireless &gt;</div>
+  <div class="connection">
+    <div class="description">
+      <h3>Pink Booklet</h3><br/>
+      <p>Connection instructions for:</p>
+      <ul>
+        <li>Fibre to the Premises</li>
+        <li>Fixed Wireless</li>
+      </ul><br/><a href="#/player">
+        <button disabled="disabled">Play Video</button></a>
+    </div>
+  </div>
 </div>

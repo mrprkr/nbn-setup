@@ -1,24 +1,33 @@
-.hero
-	h1 Welcome
-	h4 NBN Video Setup instructions
+.heading
+	h2 Welcome to the NBN
+	h4 Video instruction prototype
 
-.container
-	h4 Please select your connection type:
-	span(style={'text-align':'right', 'text-decoration':'underline'}, ng-click="showingHelp = !showingHelp", ng-hide="showingHelp").pseudoLink Not sure?
-	span(style={'text-align':'right', 'text-decoration':'underline'}, ng-click="showingHelp = !showingHelp", ng-hide="!showingHelp").pseudoLink hide
-	
-	.container(ng-if="showingHelp")
-		br
-		p You can find your connection type in a few places:
-		ul.connectionTypeList
-			li On your welcome letter
-			li On the front of your setup guide
-			li Using the following diagram:
-		img(height="130", width="300", alt="identify FTTP")
-		br
-	.booklet 
-		img(height="30", width="30", alt="FTTP")
-		span Fibre to the Premesis &gt;
-	.booklet Fibre to the Node / Fibre to the Basement &gt;
-	.booklet Fixed Wireless &gt;
-
+.notSureHelper
+	p(ng-show="!showingHelper", ng-click="showingHelper = !showingHelper") Not sure which one you have?
+	p(ng-show="showingHelper", ng-click="showingHelper = !showingHelper") hide
+.checkWelcomeLetter(ng-show="showingHelper")
+	p You can find your connection type on your welcome letter and on the front of your setup booklet.
+	br
+.connectionContainer
+	.connection
+		.description
+			h3 Blue Booklet
+			br
+			p Connection instructions for:
+			ul
+				li Fibre to the node
+				li Fibre to the basement
+			br
+			a(href="#/player")
+				button Play Video
+	.connection
+		.description
+			h3 Pink Booklet
+			br
+			p Connection instructions for:
+			ul
+				li Fibre to the Premises
+				li Fixed Wireless
+			br
+			a(href="#/player")
+				button(disabled) Play Video

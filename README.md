@@ -4,8 +4,9 @@
 ###Installation
 1. Clone the repo
 2. `$ cd <path>` into the directory
-3. `$ npm install` install dependancies
-4. `$ gulp` run gulp
+3. `$ npm install` install node dependancies
+4. `$ bower install` install bower dependancies
+5. `$ gulp` run gulp
 
 ###Troubleshooting
 

@@ -22,7 +22,7 @@ var reload 		= browserSync.reload;
 
 
 gulp.task('move', function(){
-	return gulp.src('./build/img/**/*')
+	return gulp.src('./build/assets/**/*')
 	.pipe(gulp.dest('./public/assets/'))
 })
 
