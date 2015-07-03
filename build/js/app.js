@@ -11,7 +11,7 @@ app.config(['$routeProvider', '$locationProvider',
 				controller: 'main-controller'
 			})
 
-			.when('/player', {
+			.when('/player/:connectionType', {
 				templateUrl: 'video_player.html',
 				controller: 'player-controller'
 			})
@@ -25,7 +25,6 @@ app.controller('main-controller', function($scope){
 	$scope.hello = "hello world";
 })
 
-app.controller('player-controller', function(){
-
-	
+app.controller('player-controller', function($scope, $routeParams){
+	$scope.connectionType = $routeParams.connectionType;
 })

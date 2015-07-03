@@ -1,2 +1,10 @@
 <br/><a href="#/">back </a><br/><br/>
-<iframe src="https://player.vimeo.com/video/132296072" width="500" height="281" frameborder="0" webkitallowfullscreen="webkitallowfullscreen" mozallowfullscreen="mozallowfullscreen" allowfullscreen="allowfullscreen"></iframe>
+<div ng-if="connectionType === 'vdsl'" class="player">
+  <iframe src="https://player.vimeo.com/video/132296072" width="500" height="281" frameborder="0" webkitallowfullscreen="webkitallowfullscreen" mozallowfullscreen="mozallowfullscreen" allowfullscreen="allowfullscreen"></iframe>
+</div>
+<div class="player">
+  <iframe ng-if="connectionType === 'fttp'" src="https://player.vimeo.com/video/132502525" width="500" height="281" frameborder="0" webkitallowfullscreen="webkitallowfullscreen" mozallowfullscreen="mozallowfullscreen" allowfullscreen="allowfullscreen"></iframe>
+</div>
+<div ng-if="connectionType != 'vdsl' &amp;&amp; connectionType != 'fttp'" class="error">
+  <h4>that connection type isn't avaliable</h4>
+</div>
