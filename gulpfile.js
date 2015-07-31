@@ -1,5 +1,5 @@
-/*Gulpfile for NBN-Setup
-PARKER 2015 @ BNM - MIT License
+/*Gulpfile for FAA
+PARKER 2015 @  - MIT License
 Default task compiles SASS/JADE and moves to public
 Serves to localhost:3000 from `/public`
 use `gulp deploy` to push master to gh-pages for staging
@@ -12,12 +12,10 @@ var notify 		= require('gulp-notify');
 var jade		= require('gulp-jade');
 var streamqueue = require('streamqueue');
 var templateCache = require ('gulp-angular-templatecache');
-
+var inject = require('gulp-inject');
 var ghPages		= require('gulp-gh-pages');
 var browserSync = require('browser-sync');
 var reload 		= browserSync.reload;
-
-
 
 
 
@@ -68,6 +66,7 @@ gulp.task('index',['scripts'], function(){
 	.pipe(gulp.dest('./public'))
 })
 
+
 //compile scss to css
 gulp.task('build', ['index'], function(){
 	return gulp.src('./build/scss/*.scss')
@@ -82,9 +81,18 @@ gulp.task('build', ['index'], function(){
 		.pipe(browserSync.stream());
 });
 
+gulp.task('indexer', ['build'], function () {
+  // var target = gulp.src('./public/index.html');
+  // // It's not necessary to read the files (will speed up things), we're only after their paths: 
+  // var sources = gulp.src(['./public/**/*.js', './public/**/*.css'], {read: false});
+ 
+  // return target.pipe(inject(sources))
+  //   .pipe(gulp.dest('./public'));
+});
+
 //compile on change
 gulp.task('watch', function(){
-	gulp.watch(['./build/scss/*.scss', './build/jade/*.jade', 'build/js/*.js'], ['build']);
+	gulp.watch(['./build/scss/*.scss', './build/jade/*.jade', 'build/js/*.js'], ['indexer']);
 });
 
 //serve to the browser
@@ -106,7 +114,8 @@ gulp.task('bower', function(){
 
 
 //the dafault task
-gulp.task('default', ['watch', 'serve', 'bower', 'build']);
+gulp.task('default', ['watch', 'serve', 'bower', 'indexer']);
+
 
 
 
