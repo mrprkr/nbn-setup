@@ -16,7 +16,6 @@
   "dependencies": {
     "angular-route": "~1.4.1",
     "angular": "~1.4.1",
-    "angular-touch": "~1.4.1",
-    "bootstrap": "~3.3.5"
+    "angular-touch": "~1.4.1"
   }
 }

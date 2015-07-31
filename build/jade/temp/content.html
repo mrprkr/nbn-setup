@@ -1,32 +1,36 @@
-<br/>
-<div class="container">
-  <div class="jumbotron">
-    <div class="container">
-      <h1>Welcome</h1>
-      <p>This is the test environment for FAA</p>
+
+<div class="heading">
+  <h2>Welcome to the NBN</h2>
+  <h4>Video instruction prototype</h4>
+</div>
+<div class="notSureHelper">
+  <p ng-show="!showingHelper" ng-click="showingHelper = !showingHelper">Not sure which one you have?</p>
+  <p ng-show="showingHelper" ng-click="showingHelper = !showingHelper">hide</p>
+</div>
+<div ng-show="showingHelper" class="checkWelcomeLetter">
+  <p>You can find your connection type on your welcome letter and on the front of your setup booklet.</p><br/>
+</div>
+<div class="connectionContainer">
+  <div class="connection">
+    <div class="description">
+      <h3>Blue Booklet</h3><br/>
+      <p>Connection instructions for:</p>
+      <ul>
+        <li>Fibre to the node</li>
+        <li>Fibre to the basement</li>
+      </ul><br/><a href="#/player/vdsl">
+        <button>Play Video</button></a>
     </div>
   </div>
-</div>
-<div class="container">
-  <div class="col-xs-12 col-sm-8 col-lg-8">
-    <form>
-      <p>Let's start with your first name:</p>
-      <div class="input-group input-group-md col-xs-12 col-md-8">
-        <input type="text" ng-model="name.firstname" placeholder="First Name" id="firstName" autocomplete="off" class="form-control"/>
-      </div><br/>
-      <div ng-if="name.firstname.length &gt; 1" class="lastName">
-        <p>Thanks {{name.firstname}}, now for your last name:</p>
-        <div class="input-group input-group-md col-xs-12 col-md-8">
-          <input type="text" ng-model="name.lastname" placeholder="Last Name" id="lastName" autocomplete="off" class="form-control"/>
-        </div>
-      </div><br/>
-      <div ng-if="name.lastname &amp;&amp; name.firstname" class="submit">
-        <p><a href="/#/" class="btn btn-primary btn-lf">Submit</a></p>
-      </div>
-    </form>
-  </div>
-  <div style="background-color:#efefef;height:300px" class="col-xs-12 col-sm-4 col-lg-4">
-    <h5>Summary:</h5>
-    <p>{{name.firstname}} {{name.lastname}}</p>
+  <div class="connection">
+    <div class="description">
+      <h3>Pink Booklet</h3><br/>
+      <p>Connection instructions for:</p>
+      <ul>
+        <li>Fibre to the Premises</li>
+        <li>Fixed Wireless</li>
+      </ul><br/><a href="#/player/fttp">
+        <button>Play Video</button></a>
+    </div>
   </div>
 </div>

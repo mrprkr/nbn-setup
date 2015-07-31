@@ -1,29 +1,33 @@
-br
-.container
-	.jumbotron
-		.container
-			h1 Welcome
-			p This is the test environment for FAA
-			//- p
-			//- 	a(href="/#/").btn.btn-primary.btn-lf Learn more
+.heading
+	h2 Welcome to the NBN
+	h4 Video instruction prototype
 
-.container
-	.col-xs-12.col-sm-8.col-lg-8
-		form
-			p Let's start with your first name:
-			.input-group.input-group-md.col-xs-12.col-md-8
-				input(type="text" ng-model="name.firstname" placeholder="First Name" id="firstName" autocomplete="off").form-control
+.notSureHelper
+	p(ng-show="!showingHelper", ng-click="showingHelper = !showingHelper") Not sure which one you have?
+	p(ng-show="showingHelper", ng-click="showingHelper = !showingHelper") hide
+.checkWelcomeLetter(ng-show="showingHelper")
+	p You can find your connection type on your welcome letter and on the front of your setup booklet.
+	br
+.connectionContainer
+	.connection
+		.description
+			h3 Blue Booklet
 			br
-			.lastName(ng-if="name.firstname.length > 1")
-				p Thanks {{name.firstname}}, now for your last name:
-				.input-group.input-group-md.col-xs-12.col-md-8
-					input(type="text" ng-model="name.lastname" placeholder="Last Name" id="lastName" autocomplete="off").form-control
-			
+			p Connection instructions for:
+			ul
+				li Fibre to the node
+				li Fibre to the basement
 			br
-			.submit(ng-if="name.lastname && name.firstname")
-				p
-					a(href="/#/").btn.btn-primary.btn-lf Submit
-
-	.col-xs-12.col-sm-4.col-lg-4(style={'background-color':'#efefef', 'height':'300px'})
-		h5 Summary:
-		p {{name.firstname}} {{name.lastname}}
+			a(href="#/player/vdsl")
+				button Play Video
+	.connection
+		.description
+			h3 Pink Booklet
+			br
+			p Connection instructions for:
+			ul
+				li Fibre to the Premises
+				li Fixed Wireless
+			br
+			a(href="#/player/fttp")
+				button() Play Video
